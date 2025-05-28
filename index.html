@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+
+
+        <div id="page1">
+            <div id="heading">
+                <h1>t<span>i</span>c</h1>
+                <h1><span>t</span>a<span>c</span></h1>
+                <h1>t<span>o</span>e</h1>
+            </div>
+            <div id="buttons">
+                <button id="btn" onclick="deactiveComputer(), play()">2 Players</button>
+                <button id="btn" onclick="activeComputer(), play()">1 player</button>
+            </div>
+        </div>
+
+
+        <div id="page2">
+            <div id="players">
+                <div id="card">
+                    <div id="image">
+                    </div>
+                    <h3>player1</h3>
+                    <h1 id="x">X</h1>
+                    <div id="turn">
+                        <h2 id="turnx">your turn</h2>
+                    </div>
+                </div>
+                <div id="card">
+                    <div id="image">
+                    </div>
+                    <h3>player2</h3>
+                    <h1 id="o">O</h1>
+                    <div id="turn">
+                        <h2 id="turno">your turn</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ground">
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+                <input type="text" id="box" readonly>
+            </div>
+        </div>
+
+
+            <div id="page3">
+                <div id="content3">
+                    <h1 id="msgBox"></h1>
+                    <button onclick="home()">Home</button>
+                    <button onclick="reset()">Restart</button>
+                </div>
+            </div>
+    
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #301E7D;
+}
+
+
+/* page1 */
+#page1{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #301E7D;
+    top: 0;
+    transition: all 1s ease;
+}
+#heading h1{
+    text-transform: uppercase;
+    font-size: 200px;
+    font-weight: 900;
+    color: #F8CE35;
+    line-height: 20vh;
+}
+#heading span{
+    color: #F2135A;
+}
+#buttons{
+    display: flex;
+    gap: 2vw;
+}
+#btn{
+    height: 60px;
+    width: 300px;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-weight: 700;
+    color: #3d2f7b;
+    border-radius: 50px;
+    border: none;
+    transition: all ease .5s;
+    background-image: linear-gradient(to right, #CE2587,#A330E6);
+}
+
+
+/* page2 */
+#page2{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#players{
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    gap: 8%;
+    /* background-color: aquamarine; */
+}
+/* players detail */
+#card{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-radius: 10px;
+    background-color: #23105C;
+}
+#image{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-image: url(https://i.pinimg.com/736x/60/35/0c/60350cd04d52ee2d797461222e893bf7.jpg);
+    background-size: cover;
+    background-color: #A330E6;
+}
+#image img{
+    object-fit: cover;
+}
+#card h3{
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+}
+#card h1{
+    text-transform: capitalize;
+    font-size: 40px;
+    font-weight: 800;
+}
+#card h2{
+    color: white;
+    display: none;
+    text-transform: capitalize;
+}
+#turnx{
+    display: block;
+}
+#x{
+    color: #F2135A;
+}
+#o{
+    color: #F8CE35;
+}
+
+
+#ground{
+    width: 40%;
+    height: 57%;
+    position: relative;
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 25px;
+    background-color: #6646C5;
+}
+input{
+    width: 30%;
+    height: 30%;
+    border-radius: 10px;
+    font-size: 160px;
+    font-weight: 900;
+    -webkit-text-stroke: 5px #c91313;
+    text-align: center;
+    border: none;
+    color: #23105C;
+    transition: all ease .5s;
+    background-color: #23105C;
+}
+#turn{
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    padding: 10px 0;
+    transition: all ease .5s;
+    background-color: #23105C;
+}
+#turnx{
+    display: block;
+}
+
+
+
+
+/* winning page */
+#page3{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #190b45b4;
+    top: -100%;
+    transition: all .8s ease;
+}
+#content3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+#content3 button,#msgBox{
+    height: 4vw;
+    width: 20vw;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    transition: all ease .5s;
+    background-image: linear-gradient(to right, #CE2587,#A330E6);
+}
+#content3 button:nth-child(2){
+    background-image: linear-gradient(to right, #F85E87,#F89842);
+}
+#msgBox{
+    background-image: linear-gradient(to right, #2CD67C ,#23A1E6);
+    text-align: center;
+}
+
+button:hover, input:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
