@@ -1,8 +1,10 @@
 const boxes = document.querySelectorAll('#box');
 const turn = document.querySelectorAll('#turnx, #turno')
 const page3 = document.querySelector('#page3')
+const page1 = document.querySelector('#page1')
 const msgBox = document.querySelector('#msgBox')
 let xTurn = true;
+let matchTie = true;
 let count = 0;
 
 
@@ -51,7 +53,6 @@ const winPattern = [
 ]
 
 function checkWin() {
-    let matchTie = true;
 
     for (let pattern of winPattern) {
         const val1 = boxes[pattern[0]].value;
@@ -76,3 +77,32 @@ function checkWin() {
         msgBox.innerHTML = "Match Tie";   
     }
 }
+
+
+
+//PLAY
+function play(){
+    reset();
+    page1.style.top = '-100%';
+}
+
+// RESET GAME
+function reset(){
+    for(box of boxes){
+        box.disabled = false;
+        box.value = '';
+    };   
+    page3.style.top = '-100%';
+    count = 0;
+    matchTie = true;
+    xTurn = true;
+    turn[1].style.display = 'none'
+    turn[0].style.display = 'block'
+}
+
+//HOME
+function home(){
+    page3.style.top = "-100%";
+    page1.style.top = 0;
+}
+
