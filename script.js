@@ -1,48 +1,58 @@
-// BOX CLICK
-const boxes = document.querySelectorAll('#box')
-let computerTurn = false;
-function activeComputer(){
-    computerTurn=true;
-}
-function deactiveComputer(){
-    computerTurn=false;
-}
+const boxes = document.querySelectorAll('#box');
+const turn = document.querySelectorAll('#turnx, #turno')
+const page3 = document.querySelector('#page3')
+const page1 = document.querySelector('#page1')
+const msgBox = document.querySelector('#msgBox')
+let xTurn = true;
+let matchTie = true;
+let ComTurn = false;
+let count = 0;
+
+
+// MAIN
 boxes.forEach((box) => {
     box.addEventListener('click', () => {
-        changeTurn(box);
-        checkWin();
-        if(computerTurn){
-            computer();
+        count++;
+
+        //Computer playing
+        if (ComTurn) {
+            box.disabled = true;
+            box.value = 'X';
+            box.style.webkitTextStrokeColor = '#F2135A';
+            checkWin();
+            ComPlay();
+            count++;
+            checkWin();
+        }
+        // player 2 playing
+        else {
+            changeTurn(box);
+            checkWin();
         }
     })
 })
 
 
-
-
-// CHANGING TURN
-const turn = document.querySelectorAll('#turnx, #turno')
-let turnX = true;
+// CHANGE TURN
 function changeTurn(box) {
-    if (turnX) {
-        box.disabled;
+    box.disabled = true;
+
+    if (xTurn) {
+        xTurn = false;
         box.value = 'X';
         box.style.webkitTextStrokeColor = '#F2135A';
-        turnX = false;
         turn[1].style.display = 'block'
         turn[0].style.display = 'none'
+
     }
     else {
-        box.disabled;
-        box.value = 'O'
+        xTurn = true;
+        box.value = 'O';
         box.style.webkitTextStrokeColor = '#F8CE35';
-        turnX = true;
-        turn[0].style.display = 'block'
         turn[1].style.display = 'none'
+        turn[0].style.display = 'block'
     }
-    box.disabled = true;
 }
-
 
 
 //  CHECK WINNING
@@ -56,119 +66,80 @@ const winPattern = [
     [0, 4, 8],
     [2, 4, 6]
 ]
-const page3 = document.getElementById('page3');
-const msgBox = document.getElementById('msgBox');
+
 function checkWin() {
+
     for (let pattern of winPattern) {
         const val1 = boxes[pattern[0]].value;
         const val2 = boxes[pattern[1]].value;
         const val3 = boxes[pattern[2]].value;
 
-
         if (val1 != "" && val1 == val2 && val2 == val3) {
             for (box of boxes) {
                 box.disabled = true;
             }
-            page3.style.top = 0;
-            msgBox.innerHTML = val1 + " has won"
-
             for (let index of pattern) {
                 boxes[index].style.webkitTextStrokeColor = "lightgreen";
             }
-            return;
-        }
-
-    }
-    handleTie();
-}
-
-
-function handleTie() {
-    let count = 0;
-    boxes.forEach((box) => {
-        if (box.value != "") {
-            count++;
-        }
-
-        if (count == 9) {
+            matchTie = false;
             page3.style.top = 0;
-            msgBox.innerHTML = "Match tie"
+            msgBox.innerHTML = val1 + " Wins";
             return;
         }
-    })
-    
-
+    }
+    // HANDLE TIE
+    if (count >= 9 && matchTie) {
+        page3.style.top = 0;
+        msgBox.innerHTML = "Match Tie";
+        return;
+    }
 }
 
 
 
-
-
-
-
-
-// COMPUTER PLAYING
-let count2 = 0;
-function computer() {
-
-    
-    
-    const rand = Math.floor(Math.random() * 9);
-    if (boxes[rand].value == "") {
-        boxes[rand].disabled = true;
-        boxes[rand].value = 'O'
-        boxes[rand].style.webkitTextStrokeColor = '#F8CE35';
-        turnX = true;
-        turn[0].style.display = 'block'
-        turn[1].style.display = 'none'
-        checkWin();
-        count2++;
-    }
-    else if(count2<9) {
-        computer();
-    }
-
-    console.log(count2);
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// PLAY BUTTON
-const page1 = document.getElementById('page1');
+//PLAY
 function play() {
     reset();
     page1.style.top = '-100%';
 }
-// RESET
-function reset() {
-    turnX = true;
-    turn[0].style.display = 'block'
-    turn[1].style.display = 'none'
-    boxes.forEach((box) => {
-        box.disabled = false;
-        box.value = "";
-        page3.style.top = '-100%';
 
-    })
-}
-// HOME
-function home() {
-    turnX = true;
-    turn[0].style.display = 'block'
-    turn[1].style.display = 'none'
-    page1.style.top = 0;
+// RESET GAME
+function reset() {
+    for (box of boxes) {
+        box.disabled = false;
+        box.value = '';
+    };
     page3.style.top = '-100%';
+    count = 0;
+    matchTie = true;
+    xTurn = true;
+    turn[1].style.display = 'none'
+    turn[0].style.display = 'block'
+}
+
+//HOME
+function home() {
+    page3.style.top = "-100%";
+    page1.style.top = 0;
+    ComTurn = false;
+}
+
+
+// COMPUTER PLAYING
+function ComPlay() {
+    var rand = Math.floor(Math.random() * 9);
+    if (!boxes[rand].disabled) {
+        xTurn = true;
+        boxes[rand].disabled = true;
+        boxes[rand].value = 'O';
+        boxes[rand].style.webkitTextStrokeColor = '#F8CE35';
+    }
+    else {
+        ComPlay();
+    }
+}
+
+//ACTIVATE COMPUTER
+function activateCom() {
+    ComTurn = true;
 }
