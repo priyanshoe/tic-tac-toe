@@ -1,0 +1,72 @@
+
+@media screen and (max-width:1500px) {
+    #players{
+        height: 25%;
+    }
+    input{
+        font-size: 12vw;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #page1{
+        height: 100vh;
+    }
+    #heading h1{
+        font-size: 35vw;
+        line-height: 15vh;
+    }
+    #buttons{
+        flex-direction: column;
+        gap: 5vw;
+    }
+    #btn{
+        font-size: 9vw;
+    }
+
+
+/* PAGE 2 */
+    #players{
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 95vw;
+        left: 30%;
+    }
+    #card{
+        width: 35vw;
+        height: 60vw;
+    }
+    #image{
+        height: 25vw;
+        width: 25vw;
+    }
+    #card h1{
+        font-size: 10vw;
+    }
+    #card h2{
+        font-size: 3.5vw;
+    }
+    #card h3{
+        font-size: 6vw;
+    }
+
+    #ground{
+        width: 90vw;
+        height: 90vw;
+    }
+    input{
+        font-size: 24vw;
+    }
+
+
+    /* PAGE 3 */
+    #content3 button,#msgBox{
+        height: 12vw;
+        width: 50vw;
+        text-transform: capitalize;
+        font-size: 8.5vw;
+    }
+}
+
+
